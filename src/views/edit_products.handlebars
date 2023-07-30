@@ -1,0 +1,108 @@
+<div id="catalog-container">
+    <button id="add_products">Add a Product</button>
+    <a href="/products">Show Catalog</a>
+</div>
+
+<hr>
+
+<form id="myForm" style="display:none;">
+    <div class="mb-3">
+        <label for="title" class="form-label">Name</label>
+        <input type="text" class="form-control" name="title" id="title">
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" name="description" id="description">
+    </div>
+
+    <div class="mb-3">
+        <label for="code" class="form-label">Code</label>
+        <input type="text" class="form-control" name="code" id="code">
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" name="price" id="price">
+    </div>
+    <div class="mb-3">
+        <label for="stock" class="form-label">Stock</label>
+        <input type="number" class="form-control" name="stock" id="stock">
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" name="category" id="category">
+    </div>
+    <div class="mb-3">
+        <label for="thumbnail" class="form-label">Thumbnail URL</label>
+        <input type="text" class="form-control" name="thumbnail" id="thumbnail">
+    </div>
+    <button type="submit" id="submit">Add Product</button>
+
+</form>
+
+
+<hr>
+
+
+<table border="1" class="table" id="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+        {{#each products}}
+        <tr id="item-{{this.id}}">
+            <th scope="row" class="id_prod">{{this.id}}</th>
+            <td>{{this.title}}</td>
+            <td>{{this.price}}</td>
+            <td><button type="button" class="btn edit">
+                    <span class="button__icon">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </span>
+                </button></td>
+            <td><button type="button" class="btn delete">
+                    <span class="button__icon">
+                        <ion-icon name="trash-sharp"></ion-icon>
+                    </span>
+                </button></td>
+        </tr>
+
+        {{/each}}
+    </tbody>
+</table>
+
+<form id="edit_form" style="display:none;">
+    <h3>Update a Product</h3>
+    <label for="id" class="form-label">ID</label>
+    <input type="text" name="id" class="form-control" id="id_edit_form">
+    <br>
+    <label for="title" class="form-label">Name</label>
+    <input type="text" name="title" class="form-control">
+    <br>
+    <label for="description" class="form-label">Description</label>
+    <input type="text" name="description" class="form-control">
+    <br>
+    <label for="price" class="form-label">Price</label>
+    <input type="number" name="price" class="form-control">
+    <br>
+    <label for="stock" class="form-label">Stock</label>
+    <input type="number" name="stock" class="form-control">
+    <br>
+    <label for="category" class="form-label">Category</label>
+    <input type="text" name="category" class="form-control">
+    <br>
+    <label for="thumbnail" class="form-label">Thumbnail</label>
+    <input type="text" name="thumbnail" class="form-control">
+
+    <button type="submit" class="form-label" id="submit-edit">Update Product</button>
+</form>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/static/js/edit-products-catalog.js"></script>

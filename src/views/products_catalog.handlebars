@@ -1,0 +1,22 @@
+<div id="catalog-container">
+    <h2>Products Catalog</h2>
+    <a href="/edit-products">Edit Products</a>
+</div>
+<hr>
+
+<div id="cards-container">
+    {{#each products}}
+    <div id="card-item">
+        <img src={{this.thumbnail}}>
+        <div id="metadata">
+            <p id="name"><b>{{this.title}}</b></p>
+            <p id="id">ID: {{this.id}}</p>
+        </div>
+        <div id="actions">
+            <button id="addcart">Add to Cart</button>
+            <p id="stock"><b>Stock: {{this.stock}}</b></p>
+        </div>
+    </div>
+    {{/each}}
+
+</div>
