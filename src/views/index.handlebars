@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/products">Catalogo Productos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item bigger">
+                <a class="nav-link" href="/edit-products">Edicion Catalogo</a>
+            </li>
+            <li class="nav-item bigger carrito">
+                <a class="nav-link" href="/api/carts/1">Ver Carrito</a>
+            </li>
+            <li class="nav-item bigger logout">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main id="body-container">
+    <h2>Welcome {{user.username}}, rol: {{user.role}}</h2>
+    <button id="catalog">Products Catalog</button>
+    <button id="edit_catalog">Edit Products Catalog</button>
+</main>
+<script src="/static/js/home.js"></script>

@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/products">Catalogo Productos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item bigger">
+                <a class="nav-link" href="/edit-products">Edicion Catalogo</a>
+            </li>
+            <li class="nav-item bigger carrito">
+                <a class="nav-link" href="/api/carts/1">Ver Carrito</a>
+            </li>
+            <li class="nav-item bigger logout">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <br><br>
+    <form action="/products" method="get" id="myform">
+        <label for="name" id="label-catalog">Name</label>
+        <input type="text" name="name">
+
+        <label for="code" id="label-catalog"></label>Code</label>
+        <input type="text" name="code">
+
+        <label for="stock" id="label-catalog"></label>Stock</label>
+        <input type="checkbox" name="stock">
+
+        <label for="category" id="label-catalog"></label>Category</label>
+        <input list="category" name="category">
+        <datalist id="category">
+            <option value="Camaras" />
+            <option value="Botones de seguridad" />
+            <option value="Cerraduras" />
+            <option value="Climatizacion" />
+            <option value="Garage" />
+            <option value="Control remoto" />
+            <option value="Comunicacion" />
+            <option value="Temperatura" />
+            <option value="Videoporteros" />
+            <option value="Sirenas" />
+            <option value="Botones de panico" />
+        </datalist>
+
+        <label for="price" id="label-catalog"></label>Price</label>
+        <input list="price" name="price">
+        <datalist id="price">
+            <option value="Mayor a Menor" />
+            <option value="Menor a Mayor" />
+        </datalist>
+        <button type="submit">Enviar</button>
+    </form>
+    <br><br>
+    <main class="grid">
+        {{#each docs}}
+        <article id="item-{{this.code}}">
+            <img src={{this.thumbnail}}>
+            <div class="text">
+                <h3>{{this.name}}</h3>
+                <p id="price">${{this.price}}</p>
+                <p>{{this.description}}</p>
+                    <button class="add_to_cart">Add to cart</button>
+            </div>
+        </article>
+        {{/each}}
+    </main>
+        {{#if hasPrevPage}}
+        <a href="{{prevLink}}" class="prev">Anterior</a>
+        {{/if}}
+        {{#if hasNextPage}}
+        <a href="{{nextLink}}" class="prev">Siguiente</a>
+        {{/if}}
+</div>
+
+<script src="/static/js/products-catalog.js"></script>
